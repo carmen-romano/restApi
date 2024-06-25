@@ -37,4 +37,12 @@ public class BlogController {
     private void findAndDeleteBlog(@PathVariable int blogId){
         this.blogService.findByIdAndDelete(blogId);
     }
+
+    ///TEST
+
+    @GetMapping("/readingTime")
+    public List<Blog> findByReadingTime(@RequestParam int readingTime){
+        return this.blogService.findByReadingTime(readingTime);
+    }
+
 }

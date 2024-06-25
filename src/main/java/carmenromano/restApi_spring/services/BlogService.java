@@ -59,6 +59,19 @@ public class BlogService {
                 iterator.remove();
             }
         }
-
     }
-}
+
+    public List<Blog> findByReadingTime(int readingTime) {
+        List<Blog> foundBlogs = new ArrayList<>();
+        for (Blog blog : this.blogList) {
+            if (blog.getTempoDiLettura() > readingTime) {
+                foundBlogs.add(blog);
+            }
+        }
+        if (foundBlogs.isEmpty()) {
+            throw new RuntimeException("Nessun blog trovato con tempo di lettura: " + readingTime);
+        }
+        return foundBlogs;
+    }
+    }
+
